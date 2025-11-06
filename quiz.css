@@ -1,7 +1,5 @@
 <style>
-   
-
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
 
     :root {
         --primary-color: #6366f1;
@@ -12,11 +10,10 @@
         --light-color: #f8fafc;
         --dark-color: #1e293b;
         --border-radius: 8px;
+        --education-partner: 'NAAD KALA ACADEMY'; /* Easily changeable organization name */
     }
 
-   
-    
-    .quiz-container .quiz-header {
+    .quiz-container {
         max-width: 700px;
         margin: 1rem auto;
         padding: 0 0.5rem;
@@ -44,8 +41,6 @@
         -webkit-hyphens: auto;
         -ms-hyphens: auto;
     }
-
-   
 
     .quiz-header {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -123,11 +118,6 @@
         fill: var(--primary-color);
     }
 
-    /* ************************************** */
-    /* संशोधित हेडर और प्रोग्रेस CSS समाप्त */
-    /* ************************************** */
-
-
     .question-container {
         background: white;
         border-radius: var(--border-radius);
@@ -138,7 +128,6 @@
         display: none;
     }
 
-    /* प्रश्न संख्या और विषय टैग के लिए कंटेनर */
     .question-header-row {
         display: flex;
         justify-content: space-between;
@@ -156,7 +145,6 @@
         font-weight: 600;
     }
 
-    /* नया विषय टैग CSS */
     .subject-tag {
         background-color: var(--warning-color);
         color: white;
@@ -167,8 +155,6 @@
         line-height: 1;
         white-space: nowrap;
     }
-    /* नया CSS समाप्त */
-
 
     .question-text {
         font-size: 1rem;
@@ -306,9 +292,6 @@
         border: 1px solid rgba(239, 68, 68, 0.2);
     }
 
-    /* ========================================= */
-    /* विज्ञापन बॉक्स CSS (हमेशा दृश्यमान) */
-    /* ========================================= */
     .ad-box {
         background-color: #ffffff;
         border: 1px solid #e0e0e0;
@@ -319,7 +302,6 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
-    /* समीक्षा विज्ञापन बॉक्स के लिए विशिष्ट स्टाइलिंग */
     .review-ad-box {
         background-color: #f0f4ff;
         border: 1px dashed var(--primary-color);
@@ -328,9 +310,6 @@
         border-radius: var(--border-radius);
         text-align: center;
     }
-    /* ========================================= */
-    /* विज्ञापन बॉक्स CSS समाप्त */
-    /* ========================================= */
 
     .navigation-buttons {
         display: flex;
@@ -339,7 +318,6 @@
         margin-top: 1rem;
     }
 
-    /* Quiz Page के बटनों को अलग से लक्षित करने के लिए */
     #quizNavButtons {
         display: none;
         justify-content: space-between;
@@ -365,23 +343,23 @@
         flex: 1;
     }
 
-    .quiz-container .btn-primary {
+    .btn-primary {
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         color: white;
     }
 
-    .quiz-container .btn-primary:hover {
+    .btn-primary:hover {
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
     }
 
-    .quiz-container .btn-primary {
+    .btn-secondary {
         background: var(--light-color);
         color: var(--dark-color);
         border: 2px solid #e2e8f0;
     }
 
-    .quiz-container .btn-primary:hover {
+    .btn-secondary:hover {
         background: #f1f5f9;
         transform: translateY(-2px);
     }
@@ -492,93 +470,318 @@
         }
     }
 
-    /* ========================================= */
-    /* प्रमाण पत्र (Certificate) CSS */
-    /* ========================================= */
+/* Certificate Responsive Design Fix */
+.certificate-container {
+    display: none;
+    max-width: 850px;
+    width: 100%;
+    height: 575px;
+    margin: 1rem auto;
+    padding: 2rem;
+    background: linear-gradient(145deg, #ffffff, #f7f7ff);
+    border: 10px solid var(--primary-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    
+    /* Grid layout for marksheet look */
+    display: grid;
+    grid-template-columns: 2fr 1.5fr;
+    grid-template-rows: auto auto auto auto auto 1fr auto;
+    grid-template-areas:
+        "stamp header"
+        "quiztitle score"
+        "subheader score"
+        "username score"
+        "details criteria"
+        "partner seal";
+    gap: 0.5rem 2rem;
+    align-items: start;
+    text-align: center;
+
+    /* --- FINAL CHANGE 1: Repeating "Paigham Wala LMS" Watermark --- */
+    /* This creates a repeating background pattern using an inline SVG */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='50%25' y='50%25' font-family='Noto Sans Devanagari, sans-serif' font-size='24' font-weight='bold' text-anchor='middle' dominant-baseline='middle' transform='rotate(-45 100 100)' fill='%236366f1'%3EPaigham Wala LMS%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    background-position: 0 0, 100px 100px;
+    /* The main gradient background is now an overlay */
+    background-color: #ffffff;
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ctext x='50%25' y='50%25' font-family='Noto Sans Devanagari, sans-serif' font-size='24' font-weight='bold' text-anchor='middle' dominant-baseline='middle' transform='rotate(-45 100 100)' fill='%236366f1' opacity='0.15'%3EPaigham Wala LMS%3C/text%3E%3C/svg%3E"),
+        linear-gradient(145deg, #ffffff, #f7f7ff);
+}
+
+
+
+/* Grid placement */
+#certStamp {
+    grid-area: stamp;
+    position: absolute;
+    top: 394px;
+    left: 605px;
+    transform: rotate(-20deg);
+    z-index: 10;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    
+    /* Enhanced stamp styling */
+    border: 3px dashed #c0392b;
+    border-radius: 50%;
+    color: #c0392b;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 0 3px white, 0 0 0 6px #c0392b, 0 0 10px rgba(0,0,0,0.3);
+    opacity: 0.85;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* Special styling for TOP grade stamp */
+#certStamp.top {
+    border-color: #f39c12;
+    color: #f39c12;
+    box-shadow: 0 0 0 3px white, 0 0 0 6px #f39c12, 0 0 10px rgba(0,0,0,0.3);
+    background: rgba(243, 156, 18, 0.1);
+}
+
+/* Special styling for TOPPER grade stamp */
+#certStamp.topper {
+    border-color: #27ae60;
+    color: #27ae60;
+    box-shadow: 0 0 0 3px white, 0 0 0 6px #27ae60, 0 0 10px rgba(0,0,0,0.3);
+    background: rgba(39, 174, 96, 0.1);
+}
+
+/* Special styling for PASS grade stamp */
+#certStamp.pass {
+    border-color: #3498db;
+    color: #3498db;
+    box-shadow: 0 0 0 3px white, 0 0 0 6px #3498db, 0 0 10px rgba(0,0,0,0.3);
+    background: rgba(52, 152, 219, 0.1);
+}
+
+/* Special styling for FAIL grade stamp */
+#certStamp.fail {
+    border-color: #e74c3c;
+    color: #e74c3c;
+    box-shadow: 0 0 0 3px white, 0 0 0 6px #e74c3c, 0 0 10px rgba(0,0,0,0.3);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.certificate-header {
+    grid-area: header;
+    text-align: center;
+    font-size: 2.5rem;
+}
+#certQuizTitle {
+    grid-area: quiztitle;
+    margin: 0.5rem 0 0;
+    text-align: center;
+}
+.certificate-subtext {
+    grid-area: subheader;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.user-name-box {
+    grid-area: username;
+    align-self: start;
+    justify-self: start;
+    margin: 0 0 0;
+    max-width: 100%;
+}
+.certificate-details-table {
+    grid-area: details;
+    margin-top: 1rem;
+    align-self: start;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #e2e8f0;
+}
+.certificate-details-table td {
+    padding: 0.8rem;
+    border: 1px solid #e2e8f0;
+    font-size: 1rem;
+    text-align: left;
+}
+.certificate-details-table td:first-child {
+    background-color: var(--light-color);
+    font-weight: 600;
+    width: 50%;
+}
+.score-circle-wrapper {
+    grid-area: score;
+    margin-top: 0;
+    height: auto;
+}
+#gradingCriteriaContainer {
+    grid-area: criteria;
+    margin-top: 1rem;
+}
+.certificate-seal {
+    grid-area: seal;
+    align-self: end;
+    justify-self: center;
+    margin: 1rem 0 0;
+}
+
+/* Education Partner inside certificate */
+.education-partner-cert {
+    grid-area: partner;
+    align-self: center;
+    justify-self: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--dark-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.education-partner-cert::before {
+    content: "🎓";
+    font-size: 1rem;
+}
+
+.education-partner-cert strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* User name box (enlarged) */
+#certUserName {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+.user-name-box {
+    margin: 0 0 0;
+    align-self: center;
+    justify-self: center;
+}
+/* Seal (with verified text) */
+.certificate-seal {
+    font-size: 1.1rem;
+}
+
+/* Grading criteria table */
+#gradingCriteriaTable {
+    width: 100%;
+    margin-top: 0;
+    font-size: 0.85rem;
+    border-collapse: collapse;
+    border: 1px solid #e2e8f0;
+}
+#gradingCriteriaTable th, #gradingCriteriaTable td {
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+#gradingCriteriaTable th {
+    background-color: var(--light-color);
+    font-weight: 600;
+}
+
+/* --- FINAL CHANGE 2: Larger Stamp on Mobile --- */
+/* Mobile responsive certificate */
+@media (max-width: 900px) {
     .certificate-container {
-        display: none;
-        max-width: 650px;
-        margin: 1rem auto;
-        padding: 2.5rem;
-        background: linear-gradient(145deg, #ffffff, #f7f7ff);
-        border: 10px solid var(--primary-color);
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        width: 95%;
+        max-width: none;
+        height: auto;
+        min-height: 400px;
+        padding: 1rem;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "stamp"
+            "header"
+            "quiztitle"
+            "subheader"
+            "username"
+            "score"
+            "details"
+            "criteria"
+            "partner"
+            "seal";
+        gap: 0.5rem;
         text-align: center;
-        position: relative;
-        overflow: hidden;
+        transform: scale(0.9);
+        transform-origin: center top;
+        margin-bottom: 2rem;
     }
-
-    .certificate-container::before {
-        content: "\1F3C6"; /* Trophy icon */
+    #certStamp {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 3rem;
-        opacity: 0.1;
+        top: 713px;
+        left: 284px;
+        /* --- Stamp size increased from scale(0.6) to scale(0.85) --- */
+        transform: rotate(-20deg) scale(0.85);
+        font-size: 1rem; /* Font size slightly increased */
+        padding: 0.3rem 0.6rem;
+        width: 60px;
+        height: 60px;
     }
-
     .certificate-header {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: 1.8rem;
     }
-
-    .certificate-subtext {
-        font-size: 1.2rem;
-        color: #475569;
-        margin-bottom: 1.5rem;
+    .user-name-box {
+        margin: 0.5rem auto 1rem;
     }
-
-    .certificate-seal {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--success-color);
-        margin: 1.5rem 0;
-        padding: 0.5rem 1.5rem;
-        border: 3px solid var(--success-color);
-        display: inline-block;
-        border-radius: 5px;
-    }
-
-    .certificate-score {
-        font-size: 3rem;
-        font-weight: 800;
-        color: var(--danger-color);
-        margin: 1rem 0;
-        display: block;
-    }
-
-    .certificate-score span {
-        font-size: 1.5rem;
-        font-weight: 500;
-        color: var(--dark-color);
-    }
-
     .certificate-details-table {
-        width: 100%;
-        margin: 1.5rem 0;
-        border-collapse: collapse;
+        grid-column: 1 / 2;
+        margin: 0.5rem 0;
     }
-
-    .certificate-details-table td {
-        padding: 0.8rem;
-        border: 1px solid #e2e8f0;
+    .certificate-seal {
+        align-self: center;
+        justify-self: center;
+        margin: 1rem auto;
         font-size: 1rem;
-        text-align: left;
     }
-
-    .certificate-details-table td:first-child {
-        background-color: var(--light-color);
-        font-weight: 600;
-        width: 50%;
+    #certUserName {
+        font-size: 1.4rem;
     }
+    
+    /* Score circle smaller on mobile */
+    .score-circle-wrapper {
+        height: 120px;
+    }
+    .score-circle {
+        width: 100px;
+        height: 100px;
+    }
+    .score-circle-percent {
+        font-size: 1.8rem;
+    }
+    .score-circle-label {
+        font-size: 0.7rem;
+    }
+}
 
-    /* ========================================= */
-    /* समीक्षा सूची (Review List) CSS */
-    /* ========================================= */
+@media (max-width: 480px) {
+    .certificate-container {
+        transform: scale(0.7);
+        margin-bottom: 3rem;
+    }
+   #certStamp {
+        position: absolute;
+        top: 410px;
+     left: 205px;}
+}
+
+    /* Review List CSS */
     .review-item {
         background: #f8f8f8;
         border: 1px solid #e0e0e0;
@@ -633,10 +836,221 @@
         padding-top: 0.5rem;
     }
 
+    /* User Input Form CSS */
+    .user-input-container {
+        background: #e0f2fe;
+        border: 1px solid #99d6ff;
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
 
-    /* ========================================= */
-    /* मीडिया क्वैरी (Media Queries) */
-    /* ========================================= */
+    .input-form-box {
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .user-input-container h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark-color);
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .user-input-container p {
+        font-size: 0.9rem;
+        color: #475569;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .user-input-container label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-top: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .user-input-container input[type="text"],
+    .user-input-container input[type="tel"] {
+        width: 100%;
+        padding: 0.7rem;
+        margin-bottom: 0.5rem;
+        border: 1px solid #cbd5e1;
+        border-radius: var(--border-radius);
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 0.9rem;
+    }
+
+    .saved-info {
+        border: 1px solid var(--success-color);
+        background-color: rgba(16, 185, 129, 0.1);
+        color: var(--success-color);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        text-align: center !important;
+        margin-top: 1rem;
+    }
+
+    /* Score Circle CSS */
+    .score-circle-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 0.2rem 0 0.2rem;
+        height: 50px;
+    }
+    .score-circle {
+        width: 70%;
+        height: 100px;
+        border-radius: 3%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        z-index: 5;
+    }
+   
+    .score-circle.fail {
+        background: linear-gradient(135deg, #f87171, var(--danger-color));
+    }
+    .score-circle.pass {
+        background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    }
+    .score-circle.top {
+        background: linear-gradient(135deg, #fcd34d, var(--warning-color));
+    }
+    .score-circle.topper {
+        background: linear-gradient(135deg, #34d399, var(--success-color));
+    }
+    .score-circle-percent {
+        font-size: 2.2rem;
+        line-height: 1;
+        margin-top: 5px;
+    }
+    .score-circle-label {
+        font-size: 0.8rem;
+        font-weight: 500;
+        opacity: 0.8;
+    }
+    .score-circle-verified {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 0.5rem;
+        color: var(--success-color);
+        white-space: nowrap;
+    }
+
+    /* Floating Share Button */
+    .share-fab {
+        position: fixed;
+        bottom: 120px;
+        right: -2px;
+        width: 56px;
+        height: 56px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        font-size: 12px;
+        font-weight: 600;
+        text-align: center;
+        padding: 5px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+    }
+    
+    .share-fab.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .share-fab:hover {
+        background-color: var(--secondary-color);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .share-fab svg {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 2px;
+    }
+    
+    .share-fab-text {
+        font-size: 10px;
+        line-height: 1;
+    }
+
+    /* Export Button */
+    .export-btn {
+        background-color: var(--success-color);
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--border-radius);
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    
+    .export-btn:hover {
+        background-color: #0ea570;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .export-btn svg {
+        width: 18px;
+        height: 18px;
+        margin-right: 0.5rem;
+    }
+
+    /* Education Partner Label - Outside Certificate */
+    .education-partner-label {
+        text-align: center;
+        margin: 1rem auto;
+        padding: 0.5rem 1rem;
+        background-color: rgba(99, 102, 241, 0.1);
+        border-radius: var(--border-radius);
+        font-size: 0.9rem;
+        color: var(--dark-color);
+        max-width: 650px;
+        display: none;
+    }
+    
+    .education-partner-label strong {
+        color: var(--primary-color);
+    }
+
     @media (max-width: 768px) {
         .quiz-header h1 {
             font-size: 1.2rem;
@@ -700,71 +1114,5 @@
             font-size: 0.65rem;
             padding: 0.2rem 0.6rem;
         }
-    }
-
-    /* ========================================= */
-    /* नया यूजर इनपुट फॉर्म CSS */
-    /* ========================================= */
-    .user-input-container {
-        background: #e0f2fe;
-        border: 1px solid #99d6ff;
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-
-    .input-form-box {
-        max-width: 400px;
-        margin: 0 auto;
-        text-align: left;
-    }
-
-    .user-input-container h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--dark-color);
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-        text-align: center;
-    }
-
-    .user-input-container p {
-        font-size: 0.9rem;
-        color: #475569;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-
-    .user-input-container label {
-        display: block;
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--dark-color);
-        margin-top: 0.8rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .user-input-container input[type="text"],
-    .user-input-container input[type="tel"] {
-        width: 100%;
-        padding: 0.7rem;
-        margin-bottom: 0.5rem;
-        border: 1px solid #cbd5e1;
-        border-radius: var(--border-radius);
-        box-sizing: border-box;
-        font-family: inherit;
-        font-size: 0.9rem;
-    }
-
-    .saved-info {
-        border: 1px solid var(--success-color);
-        background-color: rgba(16, 185, 129, 0.1);
-        color: var(--success-color);
-        padding: 1rem;
-        border-radius: var(--border-radius);
-        text-align: center !important;
-        margin-top: 1rem;
     }
 </style>
